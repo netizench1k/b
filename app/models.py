@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, Float, ForeignKey, Text, Boolean, Interval
+from sqlalchemy import Column, Integer, String, DateTime, Float, ForeignKey, Text, Boolean, Index, Interval
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from geoalchemy2 import Geometry
