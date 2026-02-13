@@ -18,13 +18,13 @@ app = FastAPI(title="DVFU Ride API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://dvfu-ride-bot.web.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(trips.router)
+app.include_router(trips.router, prefix="/api")
 app.include_router(ws.router)
 app.include_router(users.router)
 
