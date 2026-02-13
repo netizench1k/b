@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, DateTime, Float, ForeignKey, Tex
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from geoalchemy2 import Geometry
-from .database import Base
+from database import Base
 
 class User(Base):
     __tablename__ = "users"

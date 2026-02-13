@@ -1,8 +1,8 @@
 import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from .models import GeocodeCache, RouteCache
-from .config import settings
+from models import GeocodeCache, RouteCache
+from config import settings
 import math
 
 async def geocode_address(address: str, db: AsyncSession):

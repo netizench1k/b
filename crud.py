@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_
-from .models import Trip, User, Booking
-from .geo import haversine, get_route
+from models import Trip, User, Booking
+from geo import haversine, get_route
 from datetime import datetime
 from typing import List, Optional
 
