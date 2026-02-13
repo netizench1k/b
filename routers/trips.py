@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
-from .. import schemas, crud, geo, models
+import schemas, crud, geo, models
 from database import get_db
 from typing import List, Optional
 from datetime import datetime
