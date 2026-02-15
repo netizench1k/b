@@ -7,9 +7,9 @@ from database import get_db
 from typing import List, Optional
 from datetime import datetime
 
-router = APIRouter(prefix="/api/trips", tags=["trips"])
+router = APIRouter(tags=["trips"])
 
-@router.post("/", response_model=schemas.TripResponse)
+@router.post("/trips", response_model=schemas.TripResponse)
 async def create_trip(
     trip_data: schemas.TripCreate,
     driver_tg_id: int = Query(...),
