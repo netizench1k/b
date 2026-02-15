@@ -16,6 +16,16 @@ async def get_or_create_user(db: AsyncSession, tg_id: int, tg_username: str = No
         await db.refresh(user)
     return user
 
+async def get_active_trips(db: AsyncSession, limit: int = 20, offset: int = 0):
+    result = await db.execute(
+        select(models.Trip)
+        .where(models.Trip.status == "active")
+        .order_by(models.Trip.departure_time)
+        .limit(limit)
+        .offset(offset)
+    )
+    return result.scalars().all()
+
 async def get_nearby_trips(
     db: AsyncSession,
     lat: float,

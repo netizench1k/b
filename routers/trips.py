@@ -14,7 +14,8 @@ async def create_trip(
     trip_data: schemas.TripCreate,
     driver_tg_id: int = Query(...),
     db: AsyncSession = Depends(get_db)
-):
+):  
+    print("Received data:", trip_data.dict())
     # 1. Получить/создать пользователя
     user = await crud.get_or_create_user(db, driver_tg_id)
     
@@ -42,6 +43,15 @@ async def create_trip(
     await db.refresh(trip)
     await db.refresh(trip, ["driver"])
     return trip
+
+@router.get("/trips", response_model=List[schemas.TripResponse])
+async def get_trips(
+    limit: int = Query(20, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+    db: AsyncSession = Depends(get_db)
+):
+    trips = await crud.get_active_trips(db, limit=limit, offset=offset)
+    return trips
 
 @router.get("/search", response_model=List[schemas.TripResponse])
 async def search_trips(
