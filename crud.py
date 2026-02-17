@@ -4,6 +4,7 @@ from models import Trip, User, Booking
 from geo import haversine, get_route
 from datetime import datetime
 from typing import List, Optional
+import models
 
 # ----- ПОЛЬЗОВАТЕЛИ -----
 async def get_or_create_user(db: AsyncSession, tg_id: int, tg_username: str = None, first_name: str = None) -> User:
